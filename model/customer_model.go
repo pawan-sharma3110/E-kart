@@ -1,12 +1,13 @@
 package model
 
 type Customer struct {
+	Id       int     `json:"id"`
 	Name     string  `json:"name"`
 	Email    string  `json:"email"`
 	Mobile   string  `json:"mobile"`
 	Password string  `json:"password"`
-	Gander   string  `json:"gander"`
-	Adult    string  `json:"adult"`
+	Gender   string  `json:"gender"`
+	Adult    bool    `json:"adult"`
 	Address  Address `json:"string"`
 }
 type Address struct {

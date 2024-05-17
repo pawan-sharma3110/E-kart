@@ -2,7 +2,7 @@ package model
 
 import "time"
 
-type Oder struct {
+type Order struct {
 	Customer        Customer `json:"customer"`
 	PaymentStatus   string   `json:"payment_status"`
 	Products        Products `json:"products"`

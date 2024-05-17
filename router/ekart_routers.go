@@ -8,6 +8,6 @@ import (
 
 func MyRouter() *mux.Router {
 	router := mux.NewRouter()
-	router.HandleFunc("/ekart/customer/create", handler.CreateCustomer)
+	router.HandleFunc("/ekart/customer/create", handler.CreateCustomer).Methods("POST")
 	return router
 }
