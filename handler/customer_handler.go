@@ -8,14 +8,17 @@ import (
 )
 
 func CreateCustomer(w http.ResponseWriter, r *http.Request) {
+	var customer model.Customer
+
+	err := json.NewDecoder(r.Body).Decode(&customer)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
 	w.Header().Set("Content-Type", "Aplication/json")
 	w.WriteHeader(http.StatusCreated)
-	var RequestData struct {
-		NewCustomer model.Customer
-		Address     model.Address
-	}
-	json.NewDecoder(r.Body).Decode(&RequestData)
-	db.SaveCustomer(RequestData.NewCustomer, RequestData.Address)
-	json.NewEncoder(w).Encode(RequestData)
+	id := db.NewCustomer(customer)
+	db.InsertAdd(customer)
+	json.NewEncoder(w).Encode(map[string]int{"id": id})
 
 }
