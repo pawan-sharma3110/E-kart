@@ -67,14 +67,7 @@ func NewCustomer(customer model.Customer) int {
 	}
 
 	// Insert address
-
-	return id
-
-}
-func InsertAdd(customer model.Customer) {
-	db := DbInIt()
 	CreateAddressTable(db)
-	var id int
 	res, err := db.Exec(`INSERT INTO addresses (cust_id, house_no, town, district, state, pincode)
 	VALUES ($1, $2, $3, $4, $5, $6)`,
 		id, customer.Address.HouseNo, customer.Address.Town, customer.Address.District, customer.Address.State, customer.Address.Pincode)
@@ -84,4 +77,6 @@ func InsertAdd(customer model.Customer) {
 	if res != nil {
 		fmt.Println(res)
 	}
+	return id
+
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"ekart/db"
 	"ekart/router"
+	"log"
 	"net/http"
 )
 
@@ -11,5 +12,5 @@ func main() {
 
 	r := router.MyRouter()
 
-	http.ListenAndServe(":8030", r)
+	log.Fatal(http.ListenAndServe(":8080", r))
 }

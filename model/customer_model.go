@@ -10,7 +10,7 @@ type Customer struct {
 	Password   string    `json:"password"`
 	Gender     string    `json:"gender"`
 	Adult      bool      `json:"adult"`
-	Address    Address   `json:"string"`
+	Address    *Address  `json:"address"`
 	Created_at time.Time `json:"created_at"`
 }
 type Address struct {

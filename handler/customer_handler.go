@@ -18,7 +18,9 @@ func CreateCustomer(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "Aplication/json")
 	w.WriteHeader(http.StatusCreated)
 	id := db.NewCustomer(customer)
-	db.InsertAdd(customer)
-	json.NewEncoder(w).Encode(map[string]int{"id": id})
-
+	err = json.NewEncoder(w).Encode(map[string]int{"id": id})
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
 }
